@@ -1,0 +1,11 @@
+Package: anagram
+Title: Anagram 
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Romain", "François", email = "romain@purrple.cat", role = c("aut", "cre"))
+  )
+Description: Anagram generator.
+Depends: R (>= 3.4.3)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
