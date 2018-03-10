@@ -4,8 +4,7 @@ using namespace Rcpp;
 
 // [[Rcpp::export]]
 std::vector<std::string> anagram_get( String word, List words ){
-
-  std::string s = word.get_cstring() ;
+  const char* s = word.get_cstring() ;
   int n = LENGTH(word.get_sexp()) ;
 
   // counting how many times each letter from 'a' to 'z' appears in the word
