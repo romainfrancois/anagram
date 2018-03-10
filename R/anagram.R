@@ -2,6 +2,7 @@
 #' @importFrom stringr str_to_lower str_detect str_split
 #' @importFrom dplyr filter pull
 #' @importFrom purrr pluck
+#' @importFrom magrittr %>%
 #' @export
 anagram <- function(word){
   word <- str_to_lower(word)

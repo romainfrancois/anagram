@@ -16,6 +16,7 @@ Imports:
     assertthat,
     Rcpp,
     dplyr,
-    purrr
+    purrr,
+    magrittr
 LinkingTo: 
     Rcpp
