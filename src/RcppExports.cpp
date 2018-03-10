@@ -6,14 +6,14 @@
 using namespace Rcpp;
 
 // anagram_get
-CharacterVector anagram_get(String word, DataFrame words_internal);
-RcppExport SEXP _anagram_anagram_get(SEXP wordSEXP, SEXP words_internalSEXP) {
+std::vector<std::string> anagram_get(String word, List words);
+RcppExport SEXP _anagram_anagram_get(SEXP wordSEXP, SEXP wordsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< String >::type word(wordSEXP);
-    Rcpp::traits::input_parameter< DataFrame >::type words_internal(words_internalSEXP);
-    rcpp_result_gen = Rcpp::wrap(anagram_get(word, words_internal));
+    Rcpp::traits::input_parameter< List >::type words(wordsSEXP);
+    rcpp_result_gen = Rcpp::wrap(anagram_get(word, words));
     return rcpp_result_gen;
 END_RCPP
 }

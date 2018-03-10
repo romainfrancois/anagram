@@ -7,4 +7,4 @@
 #' - `first`: the first letter of the word
 #'
 #' @source [dwyl/english-words](https://github.com/dwyl/english-words) on github
-"words"
+"alpha_words"

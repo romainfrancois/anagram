@@ -7,9 +7,9 @@ anagram <- function(word){
   word <- str_to_lower(word)
   assert_that(!str_detect(word, "[^a-z]"))
 
-  data <- filter( words_internal, size == nchar(word) ) %>%
+  words <- filter( words_internal, size == nchar(word) ) %>%
     pull(data) %>%
-    pluck(1)
+    pluck(1, "words")
 
-  anagram_get( word, data )
+  anagram_get( word, words )
 }

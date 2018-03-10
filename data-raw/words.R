@@ -2,20 +2,20 @@ library(tidyverse)
 
 words_alpha <- read_lines("https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt")
 
-words <- tibble(
+alpha_words <- tibble(
   word = words_alpha,
   size = nchar(word),
   first = substr(word, 1, 1)
 ) %>% group_by(size, first)
 
-use_data(words, overwrite = TRUE)
+use_data(alpha_words, overwrite = TRUE)
 
 empties <- tibble(
   first = letters,
   words = map(letters, ~character(0))
 )
 
-words_internal <- words %>%
+words_internal <- alpha_words %>%
   summarise( words = list(word) ) %>%
   nest() %>%
   mutate(
