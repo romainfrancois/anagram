@@ -10,8 +10,21 @@ words <- tibble(
 
 use_data(words, overwrite = TRUE)
 
+empties <- tibble(
+  first = letters,
+  words = map(letters, ~character(0))
+)
+
 words_internal <- words %>%
   summarise( words = list(word) ) %>%
-  nest()
+  nest() %>%
+  mutate(
+    data = map( data, ~ {
+      anti_join( empties, .x, by = "first") %>%
+        bind_rows(.x) %>%
+        arrange(first)
+    })
+  )
+
 
 use_data( words_internal, internal = TRUE, overwrite = TRUE)
