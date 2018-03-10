@@ -1,0 +1,47 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+library(tibble)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# anagram
+
+The goal of anagram is to retrieve anagrams of a word from a 
+[list of english words](https://github.com/dwyl/english-words). 
+
+## Installation
+
+You can install development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("romainfrancois/anagram")
+```
+
+## Example
+
+The main function is `anagram`
+
+```{r example}
+library(anagram)
+anagram("taste")
+```
+
+The `r emo::ji("package")` also has the list of words as a grouped tibble.
+
+```{r}
+withr::with_seed(19820515, 
+  dplyr::sample_n( alpha_words, 10 )  
+)
+```
+
+
