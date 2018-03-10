@@ -10,5 +10,8 @@ words <- tibble(
 
 use_data(words, overwrite = TRUE)
 
+words_internal <- words %>%
+  summarise( words = list(word) ) %>%
+  nest()
 
-
+use_data( words_internal, internal = TRUE, overwrite = TRUE)
