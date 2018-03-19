@@ -29,19 +29,24 @@ devtools::install_github("romainfrancois/anagram")
 
 ## Example
 
-The main function is `anagram`
+The main function is `anagrams`
 
 ```{r example}
 library(anagram)
-anagram("taste")
+anagrams("taste")
 ```
 
-The `r emo::ji("package")` also has the list of words as a grouped tibble.
+The `r emo::ji("package")` also has the list of english words as a vector
 
 ```{r}
-withr::with_seed(19820515, 
-  dplyr::sample_n( alpha_words, 10 )  
-)
+sample( english, 10 )  
 ```
 
+and a tibble of anagram data
 
+```{r}
+library(dplyr)
+data_english %>% 
+  filter( n_anagrams == 4) %>% 
+  sample_n(10)
+```
