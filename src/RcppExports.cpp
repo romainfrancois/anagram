@@ -5,21 +5,21 @@
 
 using namespace Rcpp;
 
-// anagram_get
-std::vector<std::string> anagram_get(String word, List words);
-RcppExport SEXP _anagram_anagram_get(SEXP wordSEXP, SEXP wordsSEXP) {
+// get_all_anagrams
+List get_all_anagrams(DataFrame grouped, int n);
+RcppExport SEXP _anagram_get_all_anagrams(SEXP groupedSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< String >::type word(wordSEXP);
-    Rcpp::traits::input_parameter< List >::type words(wordsSEXP);
-    rcpp_result_gen = Rcpp::wrap(anagram_get(word, words));
+    Rcpp::traits::input_parameter< DataFrame >::type grouped(groupedSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(get_all_anagrams(grouped, n));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_anagram_anagram_get", (DL_FUNC) &_anagram_anagram_get, 2},
+    {"_anagram_get_all_anagrams", (DL_FUNC) &_anagram_get_all_anagrams, 2},
     {NULL, NULL, 0}
 };
 

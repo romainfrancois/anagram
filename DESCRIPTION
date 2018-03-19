@@ -17,6 +17,12 @@ Imports:
     Rcpp,
     dplyr,
     purrr,
-    magrittr
+    magrittr,
+    tidyr,
+    tibble,
+    utils
 LinkingTo: 
-    Rcpp
+    Rcpp,
+    progress
+Remotes:
+  r-lib/progress
