@@ -2,6 +2,42 @@
 using namespace Rcpp;
 #include <array>
 
+
+void process_data( int size, DataFrame data, List& out){
+  std::array<int, 128> counts ;
+
+  // by design data has 26 rows, one for each letter in a-z
+  for( int i=0; i<26; i++){
+    char letter = i + 'a' ;
+
+
+
+  }
+
+
+}
+
+
+// [[Rcpp::export]]
+List get_all_anagrams( DataFrame grouped, int n){
+
+  IntegerVector sizes = grouped[0] ;
+  List datas = grouped[1] ;
+  int nr = grouped.nrow() ;
+
+  // the final list
+  List out(n) ;
+
+  for( int i=0; i<nr; i++){
+    process_data( sizes[i], DataFrame(datas[i]), out) ;
+  }
+
+  return out ;
+}
+
+
+
+
 // [[Rcpp::export]]
 std::vector<std::string> anagram_get( String word, List words ){
   const char* s = word.get_cstring() ;
