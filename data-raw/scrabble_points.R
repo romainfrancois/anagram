@@ -41,3 +41,4 @@ separate( col =1, into = c("letter", "freq"), sep = ":") %>%
   select(letter, points, freq )-> scrabble_points_and_frequencies
 
 usethis::use_data(scrabble_points_and_frequencies, overwrite = TRUE)
+devtools::document()
