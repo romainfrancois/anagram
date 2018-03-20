@@ -1,7 +1,7 @@
 library(tidyverse)
 
 # scrabble letter points distributions copied from https://www.thespruce.com/scrabble-tile-distribution-and-point-values-412402
-scrabble_table <- tibble::tribble( # first time using datapasta
+tibble::tribble( # first time using datapasta
     ~Scrabble.Tile.Distribution.and.Point.Value,
                 "Blank/Wild: 2 tiles, 0 points",
                           "A: 9 tiles, 1 point",
@@ -30,13 +30,14 @@ scrabble_table <- tibble::tribble( # first time using datapasta
                           "X: 1 tile, 8 points",
                          "Y: 2 tiles, 4 points",
                          "Z: 1 tile, 10 points"
-    )
+    ) %>%
 
 
-separate(data = scrabble_table, col =1, into = c("letter", "freq"), sep = ":") %>% 
+separate( col =1, into = c("letter", "freq"), sep = ":") %>%
   separate( col = 2, sep = ",", into = c("freq", "points")) %>%
-  mutate( freq= str_extract(freq, pattern = "\\d+")) %>% 
-  mutate(points= str_extract(points, pattern = "\\d+")) -> scrabble_dist
+  mutate( freq= str_extract(freq, pattern = "\\d+")) %>%
+  mutate(points= str_extract(points, pattern = "\\d+")) %>%
+  mutate(freq=as.integer(freq), points=as.integer(points) ) %>%
+  select(letter, points, freq )-> scrabble_points_and_frequencies
 
-scrabble_dist %>% 
-  print(n=Inf) 
+usethis::use_data(scrabble_points_and_frequencies, overwrite = TRUE)
