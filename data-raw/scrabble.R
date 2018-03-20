@@ -38,7 +38,8 @@ separate( col =1, into = c("letter", "freq"), sep = ":") %>%
   mutate( freq= str_extract(freq, pattern = "\\d+")) %>%
   mutate(points= str_extract(points, pattern = "\\d+")) %>%
   mutate(freq=as.integer(freq), points=as.integer(points) ) %>%
-  select(letter, points, freq )-> scrabble_points_and_frequencies
+  mutate(letter= str_to_lower(letter) ) %>%
+  select(letter, points, freq ) -> data_scrabble
 
-usethis::use_data(scrabble_points_and_frequencies, overwrite = TRUE)
+usethis::use_data(data_scrabble, overwrite = TRUE)
 devtools::document()
